@@ -26,7 +26,7 @@ company_name = query_params.get('keywords', [''])[0]
 company_name = company_name.strip().lower().replace(' ', '_')
 
 #Give the path to your chromedriver file
-path = r'E:\chromedriver-win64\chromedriver.exe'  
+path = ''  
 
 description_to_filter = input("Enter the description to filter by (or type 'no' or 'n' to skip description filtering): ").strip().lower()
 location_to_filter = normalize_location(input("Enter the location to filter by (or type 'no' or 'n' to skip location filtering): ").strip().lower())

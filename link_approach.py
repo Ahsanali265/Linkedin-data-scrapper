@@ -12,10 +12,12 @@ from urllib.parse import urlparse, parse_qs
 
 def normalize_location(input_str):
     return unidecode(input_str).lower()
+    
+#Enter your credentials
+username = ''
+password = ''
 
-username = 'ahsanasghar2024@gmail.com'
-password = 'Ahsan2024@'
-
+#This is how your link should be like the example is given here.
 search_url = 'https://www.linkedin.com/search/results/people/?currentCompany=%5B%22338922%22%5D&keywords=software%20productivity%20strategists%20inc&origin=FACETED_SEARCH&sid=KGY'
 
 parsed_url = urlparse(search_url)
@@ -23,6 +25,7 @@ query_params = parse_qs(parsed_url.query)
 company_name = query_params.get('keywords', [''])[0] 
 company_name = company_name.strip().lower().replace(' ', '_')
 
+#Give the path to your chromedriver file
 path = r'E:\chromedriver-win64\chromedriver.exe'  
 
 description_to_filter = input("Enter the description to filter by (or type 'no' or 'n' to skip description filtering): ").strip().lower()
@@ -47,7 +50,7 @@ try:
     password_field.send_keys(password)
     password_field.send_keys(Keys.RETURN)
 
-    # Wait for login to complete and navigate to the search URL
+   
     WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.ID, 'global-nav-search'))
     )

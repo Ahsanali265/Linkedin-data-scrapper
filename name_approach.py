@@ -9,11 +9,12 @@ import csv
 import time
 from unidecode import unidecode
 
-# LinkedIn credentials
-username = 'ahsanasghar2024@gmail.com'
-password = 'Ahsan2024@'
+# Your LinkedIn credentials
+username = ''
+password = ''
 
-path = r'E:\chromedriver-win64\chromedriver.exe'  
+#Chromedriver File Path
+path = ''  
 
 company_name = input("Enter the company name to search for: ").strip().lower()
 description_to_filter = input("Enter the description to filter by (or type 'no' or 'n' to skip description filtering): ").strip().lower()
@@ -38,7 +39,6 @@ try:
     password_field.send_keys(password)
     password_field.send_keys(Keys.RETURN)
 
-    # Wait for login to complete
     WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.ID, 'global-nav-search'))
     )
@@ -109,7 +109,6 @@ try:
                 csv_writer.writerow([name, description, location])
                 print(f'Name: {name}, Description: {description}, Location: {location}')
 
-        # Click on the next button
         try:
             next_button = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--muted.artdeco-button--icon-right.artdeco-button--1.artdeco-button--tertiary.ember-view.artdeco-pagination__button.artdeco-pagination__button--next'))
